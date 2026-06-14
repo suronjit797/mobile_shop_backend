@@ -4,7 +4,7 @@ const bodySchema = z.object({
   name: z.string(),
   email: z.email(),
   password: z.string().min(6),
-  role: z.enum(["superAdmin", "admin", "user"]).default("user"),
+  role: z.enum(["superAdmin", "admin", "seller", "user"]).default("user"),
 });
 
 export const userCreateZodSchema = z.object({
