@@ -21,13 +21,16 @@ export const login: RequestHandler = async (req, res, next) => {
     const accessToken = jwt.sign({ user }, envConfig.token.access_token_secret, { expiresIn: envConfig.token.access_token_time });
     const refreshToken = jwt.sign({ user }, envConfig.token.refresh_token_secret, { expiresIn: envConfig.token.refresh_token_time });
 
-    await UserModel.findByIdAndUpdate(user._id, { lastLogin: new Date() }, { new: true });
+    const userData = await UserModel.findByIdAndUpdate(user._id, { lastLogin: new Date() }, { new: true });
     const cookieOptions = { secure: true, httpOnly: true, maxAge: 30 * 24 * 60 * 60 * 1000 };
 
     const payload = {
       success: true,
       message: "User logged in successfully",
-      token: accessToken,
+      data: {
+        token: accessToken,
+        user: userData,
+      },
     };
 
     res.cookie("refreshToken", refreshToken, cookieOptions);

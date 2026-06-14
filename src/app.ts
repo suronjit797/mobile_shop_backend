@@ -12,7 +12,13 @@ import globalError from "./global/globalError";
 const app: Application = express();
 const buildPath = config.FRONTEND_BUILD_PATH;
 
-app.use(cors());
+// app.use(cors());
+app.use(
+  cors({
+    origin: ["http://localhost:3000"],
+    credentials: true,
+  }),
+);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(morgan("tiny"));

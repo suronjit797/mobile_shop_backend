@@ -7,7 +7,7 @@ import { auth } from "../middleware/auth";
 const router = express.Router();
 const defaultRateLimit = 500;
 
-const moduleRoute = [{ path: "/users", routes: userRouter, auth: false, rateLimit: defaultRateLimit }];
+const moduleRoute = [{ path: "/user", routes: userRouter, auth: false, rateLimit: defaultRateLimit }];
 
 moduleRoute.forEach((route) => {
   const middlewares = [];
