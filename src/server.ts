@@ -1,0 +1,46 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { Server } from "http";
+import config from "./config/envConfig";
+
+import connectDB from "./config/db";
+import { errorLogger } from "./shared/logger";
+import { serverLogger } from "./serverLogger";
+
+
+let server: Server;
+
+process.on("uncaughtException", (error) => {
+  errorLogger(`uncaughtException: ${error.message}`);
+  process.exit(1);
+});
+
+const bootFunctions = async () => {
+  try {
+    if (!config.PORT) return errorLogger("Port is not found");
+
+    // connect mongodb
+    await connectDB();
+    server = await serverLogger();
+  } catch (error: any) {
+    errorLogger(`Error during server startup: ${error?.message}`);
+    process.exit(1);
+  }
+};
+
+bootFunctions();
+process.on("uncaughtException", (error) => {
+  errorLogger(`Uncaught Exception: ${error.message}`);
+  process.exit(1);
+});
+
+process.on("unhandledRejection", (error) => {
+  if (server) {
+    server.close(() => {
+      errorLogger(`Unhandled rejection: ${error}`);
+      process.exit(1);
+    });
+  } else {
+    process.exit(1);
+  }
+});
+
