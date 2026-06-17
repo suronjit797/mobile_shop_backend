@@ -10,6 +10,7 @@ const UserSchema: Schema = new Schema<IUser>(
     role: { type: String, enum: ["superAdmin", "admin", "seller", "user"], default: "user" },
     password: { type: String, required: true, select: false, minlength: 6 },
     lastLogin: { type: Date, default: null },
+    isActive: { type: Boolean, default: true },
   },
   { timestamps: true },
 );

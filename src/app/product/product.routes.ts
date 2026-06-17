@@ -2,7 +2,7 @@ import { generateCrudRoutes, partialFilterMiddlewares, notFoundMiddleware } from
 import ProductModel from "./product.model";
 import { Router } from "express";
 
-const partialFilterItems = [""];
+const partialFilterItems = ["name", "description", "tags", "brand"];
 const productRouter = Router();
 
 const curdRouter = generateCrudRoutes({

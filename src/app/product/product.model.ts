@@ -1,7 +1,6 @@
 import { Schema, model } from "mongoose";
 import type { IProduct } from "./product.interface";
 
-
 const ProductSchema: Schema = new Schema<IProduct>(
   {
     name: { type: String, required: true },
@@ -11,8 +10,8 @@ const ProductSchema: Schema = new Schema<IProduct>(
     images: { type: [String], required: true },
     category: { type: Schema.Types.ObjectId, ref: "Category", required: true },
     brand: { type: String, required: true },
-    rating: { type: Number, required: true },
-    reviewCount: { type: Number, required: true },
+    rating: { type: Number, required: true, default: 0 },
+    reviewCount: { type: Number, required: true, default: 0 },
     stock: { type: Number, required: true },
     tags: { type: [String], required: true },
     seller: { type: Schema.Types.ObjectId, ref: "User", required: true },

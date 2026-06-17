@@ -4,6 +4,7 @@ import userRouter from "./user/user.routes";
 import { limiter } from "../global/global.middleware";
 import { auth } from "../middleware/auth";
 import categoryRouter from "./category/category.routes";
+import productRouter from "./product/product.routes";
 
 const router = express.Router();
 const defaultRateLimit = 500;
@@ -11,6 +12,7 @@ const defaultRateLimit = 500;
 const moduleRoute = [
   { path: "/user", routes: userRouter, auth: false, rateLimit: defaultRateLimit },
   { path: "/category", routes: categoryRouter, auth: false, rateLimit: defaultRateLimit },
+  { path: "/product", routes: productRouter, auth: false, rateLimit: defaultRateLimit },
 ];
 
 moduleRoute.forEach((route) => {

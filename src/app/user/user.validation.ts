@@ -5,6 +5,7 @@ const bodySchema = z.object({
   email: z.email(),
   password: z.string().min(6),
   role: z.enum(["superAdmin", "admin", "seller", "user"]).default("user"),
+  isActive: z.boolean().default(true),
 });
 
 export const userCreateZodSchema = z.object({
