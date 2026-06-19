@@ -1,5 +1,5 @@
 {
-  "name": "ubb-backend",
+  "name": "mobile_shop",
   "module": "src/server.ts",
   "version": "0.0.0",
   "description": "A bank app",
