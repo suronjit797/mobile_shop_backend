@@ -8,6 +8,7 @@ import path from "path";
 import router from "./app/routes";
 import config from "./config/envConfig";
 import globalError from "./global/globalError";
+import envConfig from "./config/envConfig";
 
 const app: Application = express();
 const buildPath = config.FRONTEND_BUILD_PATH;
@@ -15,7 +16,7 @@ const buildPath = config.FRONTEND_BUILD_PATH;
 // app.use(cors());
 app.use(
   cors({
-    origin: ["http://localhost:3000"],
+    origin: [envConfig.FRONTEND_URL],
     credentials: true,
   }),
 );
