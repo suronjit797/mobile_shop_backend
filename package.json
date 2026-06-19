@@ -54,10 +54,12 @@
     "dotenv": "^17.2.1",
     "express": "^5.1.0",
     "express-rate-limit": "^8.2.1",
+    "glob": "^13.0.6",
     "handlebars": "^4.7.8",
     "helmet": "^8.1.0",
     "http-status": "^2.1.0",
     "jsonwebtoken": "^9.0.2",
+    "mongodb": "^7.3.0",
     "mongoose": "^8.17.0",
     "morgan": "^1.10.1",
     "multer": "^2.0.2",
@@ -78,17 +80,6 @@
     "url": "https://suronjit797.vercel.app/"
   },
   "license": "MIT",
-  "keywords": [
-    "ubb",
-    "react",
-    "nodejs",
-    "web-app",
-    "bank-app"
-  ],
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/HThree-Group/UBB-Frontend"
-  },
   "engines": {
     "node": ">=20.0.0"
   }
