@@ -1,6 +1,8 @@
 import { generateCrudRoutes, partialFilterMiddlewares, notFoundMiddleware } from "xmcrud";
 import ProductModel from "./product.model";
 import { Router } from "express";
+import { validatorMiddleware } from "../../middleware/zodValidator";
+import { productCreateZodSchema, productUpdateZodSchema } from "./product.validation";
 
 const partialFilterItems = ["name", "description", "tags", "brand"];
 const productRouter = Router();
@@ -13,6 +15,8 @@ const curdRouter = generateCrudRoutes({
     getAll: [partialFilterMiddlewares(partialFilterItems)],
     updateMany: [notFoundMiddleware],
     removeMany: [notFoundMiddleware],
+    create: [validatorMiddleware(productCreateZodSchema)],
+    update: [validatorMiddleware(productUpdateZodSchema)],
   },
 });
 
