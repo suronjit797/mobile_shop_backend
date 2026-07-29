@@ -15,11 +15,12 @@ const curdRouter = generateCrudRoutes({
     getAll: [partialFilterMiddlewares(partialFilterItems)],
     updateMany: [notFoundMiddleware],
     removeMany: [notFoundMiddleware],
-    create: [validatorMiddleware(orderCreateZodSchema), orderMiddleware.IncreaseOrderId],
-    update: [validatorMiddleware(orderUpdateZodSchema)],
+    create: [validatorMiddleware(orderCreateZodSchema), orderMiddleware.IncreaseOrderId, orderMiddleware.reduceStockOnOrder],
+    update: [validatorMiddleware(orderUpdateZodSchema), orderMiddleware.handleStatusStockChange],
   },
 });
 
 orderRouter.use(curdRouter);
 
 export default orderRouter;
+
