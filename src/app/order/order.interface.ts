@@ -16,7 +16,7 @@ export interface IOrder extends Document {
   items: {
     product: ObjectId;
     quantity: number;
-  };
+  }[];
   customer: ObjectId;
   customerOrderInfo: ICustomerOrderInfo;
   status: "delivered" | "processing" | "shipped" | "pending" | "cancelled";
