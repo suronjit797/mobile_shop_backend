@@ -31,7 +31,7 @@ const reduceStockOnOrder: RequestHandler = async (req, res, next) => {
       if (product.stock < item.quantity) {
         throw new ApiError(
           httpStatus.BAD_REQUEST,
-          `Insufficient stock for ${product.name}. Available: ${product.stock}, Requested: ${item.quantity}`
+          `Insufficient stock for ${product.name}. Available: ${product.stock}, Requested: ${item.quantity}`,
         );
       }
     }
@@ -81,4 +81,3 @@ export const orderMiddleware = {
   reduceStockOnOrder,
   handleStatusStockChange,
 };
-
